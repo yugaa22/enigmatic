@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    strategy.spinnaker.io/max-version-history: '2'
+  name: opsmx-restapp
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: opsmx-restapp
+  template:
+    metadata:
+      labels:
+        app: opsmx-restapp
+        version: 'simple-restapp-304'
+    spec:
+      containers:
+        - image: >-
+            docker.io/opsmx11/restapp:simple-restapp-304
+          imagePullPolicy: Always
+          name: restapp
+          env:
+          - name: USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: dbsecret
+                key: username
+          - name: PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: dbsecret
+                key: password
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+            - containerPort: 9090
+              name: prometheus
+              protocol: TCP
+      imagePullSecrets:
+        - name: oes-repo
+      volumeMounts:
+      - name: dbconfig
+        mountPath: "/opt/config"
+        readOnly: true
+  volumes:
+    - name: dbconfig
+      configMap:
+        name: dbconfig
