@@ -1,12 +1,22 @@
 {
   "key1": "value1",
   "key2": "value2",
-  "service1": {
-      "install": "true",
-      "image": "image1"
-  },
-  "service2": {
-      "install": "true",
-      "image": "image2"
-  }
+  "frontend": {
+     "gitrepo": "visibility-service",
+     "commitid": "dff38183ac2818fe7a870b4f4f09938453ff03f3568",
+     "jiraticketno": "OP-3685",
+     "jenkinsjob": {
+     "name": "Dev-visibilityservice-build-branch",
+     "buildid": "19"
+     }
+  } 
+  "backend": {
+     "gitrepo": "visibility-service",
+     "commitid": "dff38183ac2818fe7a870b4f4f09938453ff03f3568",
+     "jiraticketno": "OP-3685",
+     "jenkinsjob": {
+     "name": "Dev-visibilityservice-build-branch",
+     "buildid": "19"
+     }
+  } 
 }
