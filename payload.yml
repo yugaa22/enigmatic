@@ -18,7 +18,7 @@
      "jenkinsjob": {
      "name": "Dev-visibilityservice-build-branch",
      "buildid": "20",
-     "imageid": "nginx:57136a762436a5d41e60c61db0d89baea17a289845ea55565e45cc79a9e81e23"
+     "imageid": "restapp:57136a762436a5d41e60c61db0d89baea17a289845ea55565e45cc79a9e81e23"
      }
   } 
 }
